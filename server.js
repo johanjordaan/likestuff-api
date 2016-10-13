@@ -23,6 +23,7 @@ var startApp = (db) => {
 	var images = db.collection('images');
 	var upload = multer({ dest: 'uploads/' })
 	var app = express();
+   app.set('port', (process.env.PORT || 3000));
 	app.use(bodyParser.json());
 	app.post('/upload', upload.single('file'), function(req, res) {
 		console.log(".................",req.body.tags);
@@ -46,7 +47,7 @@ var startApp = (db) => {
 		},{tags:['love','hate']});
 	})
 
-	app.listen(3000, function () {
-		console.log('Listening on port 3000!');
+	app.listen(app.get('port'), function () {
+		console.log(`Listening on port ${app.get('port')}!`);
 	});
 };
