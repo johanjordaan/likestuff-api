@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var fs = require('fs');
 var express = require('express');
 var multer = require('multer');
@@ -29,11 +30,16 @@ var startApp = (db) => {
 		console.log('.................', req.body.tags);
 		console.log('.................', req.body.location);
 
+		var tags = req.body.tags;
+		if (!_.isArray(req.body.tags)) {
+			tags = [req.body.tags];
+		}
+
 		cloudinary.uploader.upload(req.file.path, function (result) {
 			var image = {
 				cloudinary_response: result,
 				location: req.body.location,
-				tags: req.body.tags,
+				tags: tags,
 			};
 
 			// Save some stuff
@@ -44,7 +50,7 @@ var startApp = (db) => {
 			fs.unlink(req.file.path, (err) => {
 				res.status(200).json({ success: true });
 			});
-		}, { tags: ['love', 'hate'] });
+		}, { tags: tags });
 	});
 
 	app.listen(app.get('port'), function () {
