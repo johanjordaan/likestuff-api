@@ -5,8 +5,6 @@ var bodyParser = require('body-parser');
 var cloudinary = require('cloudinary');
 var MongoClient = require('mongodb').MongoClient;
 
-var url = 'mongodb://localhost:27017/myproject';
-
 var log = require('./log');
 var config = require('./config');
 
@@ -16,7 +14,7 @@ cloudinary.config({
   api_secret: config.cloudinary_secret,
 });
 
-MongoClient.connect(url, function(err, db) {
+MongoClient.connect(config.db, function(err, db) {
 	console.log("Connected successfully to server");
 	startApp(db);
 });

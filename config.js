@@ -8,6 +8,7 @@ var prodConfig = {
 	cloudinary_cloud: process.env.CLOUDINARY_CLOUD,
 	cloudinary_key: process.env.CLOUDINARY_KEY,
 	cloudinary_secret: process.env.CLOUDINARY_SECRET,
+	db: process.env.MONGODB_URI,
 };
 
 var testConfig = {
@@ -15,6 +16,7 @@ var testConfig = {
 	cloudinary_cloud: process.env.CLOUDINARY_CLOUD,
 	cloudinary_key: process.env.CLOUDINARY_KEY,
 	cloudinary_secret: process.env.CLOUDINARY_SECRET,
+	db: process.env.MONGODB_URI,
 };
 
 var devConfig = {
@@ -22,6 +24,7 @@ var devConfig = {
 	cloudinary_cloud: process.env.CLOUDINARY_CLOUD,
 	cloudinary_key: process.env.CLOUDINARY_KEY,
 	cloudinary_secret: process.env.CLOUDINARY_SECRET,
+	db: process.env.MONGODB_URI,
 };
 
 var config = devConfig;
